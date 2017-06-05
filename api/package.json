@@ -1,0 +1,19 @@
+{
+    "name": "findsyslibraries",
+    "version": "0.0.1",
+    "description": "API that return a list of system libraries that a ruby gem depends on",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.15.3",
+        "mongoose": "4.10.4",
+        "body-parser": "1.17.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/HeshamW8/findsyslibraries"
+    },
+    "author": "Hesham ElWardany"
+}
