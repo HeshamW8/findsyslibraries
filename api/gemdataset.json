@@ -1,0 +1,39 @@
+{
+    "name": "nokogiri",
+    "platforms": {
+        "apt": [
+            "libxslt-dev",
+            "libxml2-dev"
+        ]
+    }
+}
+{
+    "name": "sqlite3",
+    "platforms": {
+        "apt": [
+            "libsqlite3-dev"
+        ],
+        "yum": [
+            "sqlite-devel"
+        ]
+    }
+}
+{
+    "name": "charlock_holmes",
+    "platforms": {
+        "apt": [
+            "libicu-dev"
+        ],
+        "homebrew": [
+            "icu4c"
+        ]
+    }
+}
+{
+    "name": "capybara-webkit",
+    "platforms": {
+        "apt": [
+            "libqtwebkit-dev"
+        ]
+    }
+}
