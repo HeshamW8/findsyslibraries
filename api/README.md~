@@ -6,9 +6,7 @@ certain ruby gem uses on a certain platform.
 
 #INSTRUCTIONS
 
-1. run the following command in this directory to install packages listed in the package.json file 
-
-npm install
+1. run npm install in this directory to install packages listed in the package.json file 
 
 2. Run the following command in the terminal to populate the database with gem dependencies from the gemdataset.json
 
