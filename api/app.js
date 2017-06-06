@@ -29,9 +29,13 @@ MongoClient.connect(dbURL, function (err, db) {
     mongodb = db;
     gemsCollection = db.collection('gems');
 });
+
 app.get('/', function (req, res) {
     var gemName = req.query.name;
     var platform = req.query.platform;
+
+    console.log('Query Received : ');
+    console.log(req.query);
 
     if (gemName && platform) {
         gemsCollection.findOne({ name: gemName }, function (err, doc) {
@@ -41,13 +45,13 @@ app.get('/', function (req, res) {
                 if (requiredPlatform) {
                     res.send(requiredPlatform);
                 } else {
-                    res.send('no information about this platform');
+                    res.send('gem info not available for this platform');
                 }
             } else {
-                res.send('gem not available');
+                res.send('gem not available in catalog');
             }
         });
-    } else {
+    }else{
         res.send('invalid api call');
     }
 });

@@ -3,6 +3,7 @@ require 'net/http'
 require 'thor'
 require 'devise'
 require 'rbconfig'
+require 'bundler'
 
 
 module Findsyslibs
@@ -11,8 +12,6 @@ module Findsyslibs
 
 		desc 'list gemName',
 		'list native packages required by the gem'
-		method_option :gemfile, default: 'Gemfile',
-		desc: 'find native packages required by gems in the gem file'
 
 		def list(gemName)
 
@@ -30,8 +29,39 @@ module Findsyslibs
 			res = Net::HTTP.start(url.host, url.port) {|http|
 				http.request(req)
 			}
+
+			puts gemName + ' sys dependencies : ' + res.body
+		rescue => ex
+			$stderr.puts ex.message
+		end
+
+		desc 'listGemFile',
+		'list native packages required by the gemFile'
+
+		def listGemFile()
+
+			platform = os()
+
+			case platform
+			when /linux/
+				packageManager = 'apt'
+			when /macosx/
+				packageManager = 'homebrew'
+			end
+
+			lockfile = Bundler::LockfileParser.new(Bundler.read_file(Bundler.default_lockfile))
 			
-			puts res.body
+			lockfile.dependencies.each do |key, array|
+
+				url = URI.parse('http://localhost:3000?name=' + array.name + '&&platform=' + packageManager)
+				req = Net::HTTP::Get.new(url.to_s)
+				res = Net::HTTP.start(url.host, url.port) {|http|
+					http.request(req)
+				}
+
+				puts array.name + ' sys dependencies : ' + res.body
+			end
+
 		rescue => ex
 			$stderr.puts ex.message
 		end
