@@ -2,10 +2,7 @@
 
 require "bundler/setup"
 require "findsyslibs"
-require "irb"
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 Findsyslibs::List.start
-
-# IRB.start(__FILE__)
