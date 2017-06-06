@@ -1,7 +1,6 @@
 require "findsyslibs/version"
 require 'net/http'
 require 'thor'
-require 'devise'
 require 'rbconfig'
 require 'bundler'
 
