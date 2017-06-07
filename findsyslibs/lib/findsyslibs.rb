@@ -54,7 +54,7 @@ module Findsyslibs
 			
 			lockfile.dependencies.each do |key, array|
 
-				url = URI.parse('http://localhost:3000?name=' + array.name + '&&platform=' + packageManager)
+				url = URI.parse(API_URL + '?name=' + array.name + '&&platform=' + packageManager)
 				req = Net::HTTP::Get.new(url.to_s)
 				res = Net::HTTP.start(url.host, url.port) {|http|
 					http.request(req)
