@@ -9,6 +9,7 @@ var app = express();
 var server = http.createServer(app);
 
 app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.MONGODB_PORT || 27017);
 
 // app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(bodyParser.json())
