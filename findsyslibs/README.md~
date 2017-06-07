@@ -26,4 +26,5 @@ findsyslibs listGemFile
 
 This will list all the system libraries required by the gems in the gem file
 
-*Note that the gems supported are the ones available in the gedataset.json file in the api folder in this rep.
+*Note that the gems supported are the ones available in the gedataset.json file in the api folder in this repo.
+** This gem was built using ruy-2.4.0
