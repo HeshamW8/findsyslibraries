@@ -9,7 +9,6 @@ var app = express();
 var server = http.createServer(app);
 
 app.set('port', process.env.PORT || 3000);
-app.set('port', process.env.MONGODB_PORT || 27017);
 
 // app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(bodyParser.json())
@@ -17,12 +16,14 @@ app.set('port', process.env.MONGODB_PORT || 27017);
 // Connection URL
 var dbURL = 'mongodb://localhost:27017/gemLookup';
 
+app.set('mongo-url', process.env.MONGODB_ADDON_URI || dbURL);
+
 // db instance
 var mongodb;
 var gemsCollection;
 
 // Use connect method to connect to the server
-MongoClient.connect(dbURL, function (err, db) {
+MongoClient.connect(app.get('mongo-url'), function (err, db) {
     assert.equal(null, err);
     console.log("Connected successfully to database");
 
@@ -51,7 +52,7 @@ app.get('/', function (req, res) {
                 res.send('gem not available in catalog');
             }
         });
-    }else{
+    } else {
         res.send('invalid api call');
     }
 });
