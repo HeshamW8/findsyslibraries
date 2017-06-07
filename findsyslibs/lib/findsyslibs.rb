@@ -1,7 +1,6 @@
 require "findsyslibs/version"
 require 'net/http'
 require 'thor'
-require 'devise'
 require 'rbconfig'
 require 'bundler'
 
@@ -9,6 +8,8 @@ require 'bundler'
 module Findsyslibs
 
 	class List < Thor
+
+		API_URL = 'http://app-673ea3e7-1521-4a19-8155-2be54aacd14e.cleverapps.io/'
 
 		desc 'list gemName',
 		'list native packages required by the gem'
@@ -24,7 +25,7 @@ module Findsyslibs
 				packageManager = 'homebrew'
 			end
 
-			url = URI.parse('http://localhost:3000?name=' + gemName + '&&platform=' + packageManager)
+			url = URI.parse(API_URL +  '?name=' + gemName + '&&platform=' + packageManager)
 			req = Net::HTTP::Get.new(url.to_s)
 			res = Net::HTTP.start(url.host, url.port) {|http|
 				http.request(req)
