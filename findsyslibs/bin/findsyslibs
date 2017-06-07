@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-require "bundler/setup"
-require "findsyslibs"
-
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-
-Findsyslibs::List.start

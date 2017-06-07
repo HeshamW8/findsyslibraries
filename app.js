@@ -2,7 +2,6 @@ var http = require('http');
 var assert = require('assert');
 
 var express = require('express');
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 
